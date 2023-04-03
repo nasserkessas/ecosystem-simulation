@@ -25,9 +25,6 @@ export class EulerLotkaVolterraModel {
 
         for (let t = delta_t; t < max_t; t += delta_t) {
 
-            console.log(math.add(this.intrinsicGrowthRateMatrix, math.multiply(this.interactionMatrix, lastPop)))
-            // console.log(`dx/dt: ${math.dotMultiply(math.add(this.intrinsicGrowthRateMatrix, math.multiply(this.interactionMatrix, lastPop)), lastPop)}`);
-
             let thisState = math.add(lastPop, math.dotMultiply(delta_t, math.dotMultiply(math.add(this.intrinsicGrowthRateMatrix, math.multiply(this.interactionMatrix, lastPop)), lastPop)));
             lastPop = thisState;
             simulationData.push({population: thisState, time: t});
